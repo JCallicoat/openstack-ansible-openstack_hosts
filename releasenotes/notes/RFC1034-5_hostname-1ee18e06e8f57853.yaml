@@ -6,3 +6,5 @@ features:
     OpenStack deployment.
   - The **openstack_hosts** role will setup an RFC1034/5
     hostname and create an alias for all hosts in inventory.
+  - Deployers can choose to use a short hostname by setting
+    ``openstack_domain`` to an empty string with an override.

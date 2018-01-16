@@ -123,7 +123,7 @@ openstack_user_kernel_options: []
 openstack_host_metal_distro_packages: "{{ _openstack_host_metal_distro_packages }}"
 
 # Set the openstack domain name
-openstack_domain: openstack.local
+openstack_domain: .openstack.local
 
 # Global environment variables should be empty by default
 global_environment_variables: {}
