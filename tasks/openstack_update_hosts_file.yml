@@ -22,19 +22,27 @@
   run_once: true
   vars:
     ansible_python_interpreter: "/usr/bin/python"
+  tags:
+    - fix-hostnames
 
 - name: Copy templated hosts file entries script
   template:
     src: "/var/tmp/openstack-host-hostfile-setup.sh"
     dest: "/usr/local/bin/openstack-host-hostfile-setup.sh"
     mode: "0755"
+  tags:
+    - fix-hostnames
 
 - name: Stat host file
   stat:
     path: /etc/hosts
   register: stat_hosts
+  tags:
+    - fix-hostnames
 
 - name: Update hosts file
   command: "/usr/local/bin/openstack-host-hostfile-setup.sh"
   register: update_hosts
   changed_when: stat_hosts.stat.md5 | string != update_hosts.stdout | string
+  tags:
+    - fix-hostnames
